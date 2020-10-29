@@ -1,4 +1,14 @@
 //
+//  CustomBottomSheet.swift
+//  WidgetMaker
+//
+//  Created by Jesus Emilio Fernandez de Frutos on 28/10/2020.
+//  Copyright © 2020 iDec. All rights reserved.
+//
+
+import Foundation
+
+//
 //  Copyright © FINN.no AS, Inc. All rights reserved.
 //
 
@@ -111,6 +121,7 @@ public final class BottomSheetView: UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.backgroundColor = UIColor(white: 0, alpha: 0.4)
         view.addGestureRecognizer(tapGesture)
+        
         view.isHidden = true
         view.alpha = 0
         return view
@@ -207,7 +218,6 @@ public final class BottomSheetView: UIView {
         ])
 
         updateTargetOffsets()
-        addGestureRecognizer(panGesture)
 
         transition(to: targetIndex)
         createTranslationTargets()
@@ -294,6 +304,9 @@ public final class BottomSheetView: UIView {
         addSubview(contentView)
         addSubview(handleBackgroundView)
         addSubview(handleView)
+        
+        handleBackgroundView.addGestureRecognizer(panGesture)
+        handleBackgroundView.isUserInteractionEnabled = true
 
         handleBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
